@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Reservation {
 
+    
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;

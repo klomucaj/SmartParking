@@ -27,4 +27,28 @@ public class ReservationController {
 
         return ResponseEntity.ok(allReservations);
     }
+    @PostMapping(value = "/reservate")
+    public ResponseEntity<?> saveResrvation(@RequestBody Reservation reservation){
+
+        System.out.println("saveResrvation");
+        System.out.println(reservation);
+        reservationService.saveReservation(reservation);
+        return ResponseEntity.ok("User Saved Successfully");
+
+    }
+
+    @PutMapping(value = "/editReservation")
+    public ResponseEntity<?> editResrvation(@RequestBody Reservation reservation){
+
+        System.out.println("editResrvation");
+        System.out.println(reservation);
+        reservationService.updateReservation(reservation);
+        return ResponseEntity.ok("User Saved Successfully");
+
+    }
+
+
+
+
 }
+

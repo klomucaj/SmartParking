@@ -48,7 +48,15 @@ public class ReservationController {
     }
 
 
+    @DeleteMapping(value = "/deleteReservation/{id}")
+    public ResponseEntity<?> deleteResrvation(@PathVariable Integer id){
 
+        System.out.println("deleteReservation with id");
+        System.out.println(id);
+        reservationService.deleteReservation(id);
+        return ResponseEntity.ok("User Saved Successfully");
+
+    }
 
 }
 

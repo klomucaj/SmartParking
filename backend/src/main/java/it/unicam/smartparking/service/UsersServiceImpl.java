@@ -27,5 +27,28 @@ public class UsersServiceImpl implements UsersService {
     private RolesRepository rolesRepository;
 
 
+    @Override
+    public List<UsersDto> getAllUsers() {
+        List<Users> users = (List<Users>) usersRepository.findAll();
+
+        List<UsersDto> usersDtos = new ArrayList<>();
+        for (Users user: users) {
+            UsersDto allUsers = new UsersDto();
+            allUsers.setId(user.getUserId());
+            allUsers.setName(user.getName());
+            allUsers.setLastName(user.getLastName());
+            allUsers.setEmail(user.getEmail());
+
+            List<String> roles = new ArrayList<>();
+            for (Roles role: user.getUserRoles()) {
+                roles.add(role.getRoleName());
+            }
+            allUsers.setRoles(roles.stream().toArray(String[]::new));
+
+            usersDtos.add(allUsers);
+        }
+        return usersDtos;
+    }
+
 
 }

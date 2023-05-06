@@ -44,5 +44,50 @@ class Home extends React.Component {
         )
     }
 }
+export default Home;
 
+
+
+const StyledTitle = styled.div`
+    font-family: BerlinSansFBDemi;
+    font-size: 52px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 23.92px;
+    text-align: center;
+    color: #ffffff;
+`;
+
+const StyledButton = styled(Button)`
+    width: 261px;
+    height: 57px;
+    border-radius: 15px;
+    background-image: linear-gradient(to top, #ffffff, #ffffff);
+
+    font-family: BerlinSansFBDemi;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 16.56px;
+    text-align: center;
+    color: #14a7ac;
+}
+`;
+
+
+const StyledDiv = styled.div`
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+`;
+
+const StyledP = styled.p`
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+`;
 

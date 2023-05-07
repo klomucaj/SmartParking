@@ -77,5 +77,34 @@ public class UsersServiceImpl implements UsersService {
         return false;
     }
 
+    @Override
+    public boolean updatePassword(UserDto userDto) {
+
+        Users users = usersRepository.findByEmailAndPassword(userDto.getEmail(), userDto.getPassword());
+
+        if (users !=null){
+            users.setPassword(userDto.getNewPassword());
+            usersRepository.save(users);
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+
+    }
+
+    @Override
+    public Users getUser(Integer userId) {
+        return null;
+    }
+
+    @Override
+    public Users getUserByEmail(String email) {
+        return usersRepository.findByEmail(email);
+    }
+
 
 }

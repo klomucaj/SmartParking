@@ -50,5 +50,32 @@ public class UsersServiceImpl implements UsersService {
         return usersDtos;
     }
 
+    @Override
+    public void saveUser(Users users) {
+        usersRepository.save(users);
+    }
+
+    @Override
+    public boolean editUSer(UsersDto users) {
+
+        Users user = usersRepository.findByEmail(users.getEmail());
+        if (user != null){
+            user.setName(users.getName());
+            user.setLastName(users.getLastName());
+            user.setDisabled(users.getDisabled());
+            if (users.getRoles() != null){
+                Set<Roles> rolesSet = new HashSet<>();
+                for (String role: users.getRoles()) {
+                    Roles roles = rolesRepository.findByRoleName(role);
+                    rolesSet.add(roles);
+                }
+                user.setUserRoles(rolesSet);
+            }
+            usersRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
 
 }

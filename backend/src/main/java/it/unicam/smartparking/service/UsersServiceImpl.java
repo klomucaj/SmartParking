@@ -106,5 +106,43 @@ public class UsersServiceImpl implements UsersService {
         return usersRepository.findByEmail(email);
     }
 
+    @Override
+    public LoginUserDto checkUser(String email, String password) {
+        Users user = usersRepository.findByEmailAndPassword(email, password);
+        LoginUserDto loginUserDto =  null;
 
+        if (user != null) {
+            loginUserDto = new LoginUserDto();
+
+            loginUserDto.setId(user.getUserId());
+            loginUserDto.setName(user.getName());
+            loginUserDto.setLastName(user.getLastName());
+            loginUserDto.setEmail(user.getEmail());
+
+            loginUserDto.setDisabled(user.getDisabled() ? "Yes" : "No");
+
+            Set<Integer> rolesSet = new HashSet<>();
+            Set<String> rolesStringSet = new HashSet<>();
+            for (Roles role : user.getUserRoles()) {
+                rolesSet.add(role.getRoleId());
+                rolesStringSet.add(role.getRoleName());
+            }
+
+            loginUserDto.setRoles((rolesSet.stream().toArray(Integer[]::new)));
+            loginUserDto.setRolesString((rolesStringSet.stream().toArray(String[]::new)));
+
+        }
+
+        return loginUserDto;
+    }
+
+    @Override
+    public List<Roles> getUserRoles(Integer userId) {
+        return null;
+    }
+
+    @Override
+    public List<Permissions> getUserPermissions(Integer userId) {
+        return null;
+    }
 }

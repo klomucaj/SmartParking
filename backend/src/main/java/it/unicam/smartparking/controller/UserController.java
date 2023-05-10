@@ -2,16 +2,18 @@ package it.unicam.smartparking.controller;
 
 
 import it.unicam.smartparking.dto.UsersDto;
+import it.unicam.smartparking.model.Roles;
+import it.unicam.smartparking.model.Users;
 import it.unicam.smartparking.service.RolesService;
 import it.unicam.smartparking.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -38,6 +40,33 @@ public class UserController {
         List<UsersDto> users = usersService.getAllUsers();
 
         return ResponseEntity.ok(users);
+    }
+
+    @PostMapping(value = "/save")
+    public ResponseEntity<?> saveUser(@RequestBody Users users){
+
+        Users user = usersService.getUserByEmail(users.getEmail());
+
+        System.out.println("User found: " + user);
+
+        if (user == null){
+            Users usersModel = new Users();
+            usersModel.setName(users.getName());
+            usersModel.setLastName(users.getLastName());
+            usersModel.setEmail(users.getEmail());
+            usersModel.setPassword(users.getPassword());
+            usersModel.setDisabled(users.getDisabled());
+
+            Set<Roles> rolesSet = new HashSet<>();
+            Roles roles = rolesService.getRolesByName("Driver");
+            rolesSet.add(roles);
+            usersModel.setUserRoles((rolesSet));
+
+            usersService.saveUser(usersModel);
+
+            return ResponseEntity.ok("User Saved Successfully");
+        }
+        return new ResponseEntity<>("User already exist", HttpStatus.CONFLICT);
     }
 
 

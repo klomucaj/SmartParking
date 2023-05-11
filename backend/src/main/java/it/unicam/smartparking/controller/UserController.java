@@ -69,5 +69,17 @@ public class UserController {
         return new ResponseEntity<>("User already exist", HttpStatus.CONFLICT);
     }
 
+    @PutMapping(value = "/editUser")
+    public ResponseEntity<?> editUser(@RequestBody UsersDto users){
+
+        System.out.println("editUser" + users);
+        Boolean editUSer = usersService.editUSer(users);
+        if (editUSer)
+            return ResponseEntity.ok("User Saved Successfully");
+
+        return new ResponseEntity<>("User does not exist", HttpStatus.CONFLICT);
+
+    }
+
 
 }

@@ -1,6 +1,8 @@
 package it.unicam.smartparking.controller;
 
 
+import it.unicam.smartparking.dto.LoginUserDto;
+import it.unicam.smartparking.dto.UserDto;
 import it.unicam.smartparking.dto.UsersDto;
 import it.unicam.smartparking.model.Roles;
 import it.unicam.smartparking.model.Users;
@@ -80,6 +82,21 @@ public class UserController {
         return new ResponseEntity<>("User does not exist", HttpStatus.CONFLICT);
 
     }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> checkUser(@RequestBody UserDto userDto){
+
+        LoginUserDto users = usersService.checkUser(userDto.getEmail(), userDto.getPassword());
+
+        if (users !=null){
+
+            return ResponseEntity.ok(users);
+        }
+
+        return new ResponseEntity<>("Email and Password are wrong", HttpStatus.NOT_FOUND);
+
+    }
+
 
 
 }

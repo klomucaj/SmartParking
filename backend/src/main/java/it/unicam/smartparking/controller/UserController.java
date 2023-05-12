@@ -98,5 +98,20 @@ public class UserController {
     }
 
 
+    @PutMapping(value = "/changePassword")
+    public ResponseEntity<?> editUser(@RequestBody UserDto userDto){
+
+        System.out.println("update password" + userDto);
+        Boolean changePassword = usersService.updatePassword(userDto);
+
+        if (changePassword){
+
+            return ResponseEntity.ok("Password changed");
+        }
+
+        return new ResponseEntity<>("Password can not be changed", HttpStatus.UNPROCESSABLE_ENTITY);
+
+    }
+
 
 }

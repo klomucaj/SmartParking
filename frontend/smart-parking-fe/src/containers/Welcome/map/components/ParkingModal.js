@@ -182,7 +182,7 @@ export const ParkingModal = ({ parkingName, ifIsModalVisible, parkingLotCost}) =
             label="Cost"
             rules={[
               {
-                required: false,
+                required: true,
               },
             ]}
           >

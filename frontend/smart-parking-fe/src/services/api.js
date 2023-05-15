@@ -33,7 +33,7 @@ export const usersAPI = {
       return { data: response.data, status: response.status };
     } catch (e) {
       // console.log("response error enter", e);
-      return { Messages: "Server non risponde. Prova più tardi" };
+      return { Messages: "Server not responding. Try later" };
     }
   },
 
@@ -52,7 +52,7 @@ export const usersAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -73,7 +73,7 @@ export const usersAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -94,7 +94,7 @@ export const usersAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -115,7 +115,7 @@ export const usersAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -130,7 +130,7 @@ export const reservationsAPI = {
       return { data: response.data, status: response.status };
     } catch (e) {
       // console.log("response error enter", e);
-      return { Messages: "Server non risponde. Prova più tardi" };
+      return { Messages: "Server not responding. Try later" };
     }
   },
 
@@ -149,7 +149,7 @@ export const reservationsAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -169,7 +169,7 @@ export const reservationsAPI = {
       }
       return {
         status: 400,
-        message: `Errore. Prova più tardi. ErrorMessage: ${e}`,
+        message: `Error. Try later. Error message: ${e}`,
       };
     }
   },
@@ -181,7 +181,7 @@ export const reservationsAPI = {
       return response;
     } catch (e) {
       message.error("An error occurred. Please try again later!")
-      return { Messages: "Server non risponde. Prova più tardi" };
+      return { Messages: "Server not responding. Try later" };
     }
   },
 
@@ -198,7 +198,7 @@ export const maerkersAPI = {
       return { data: response.data, status: response.status };
     } catch (e) {
       // console.log("response error enter", e);
-      return { Messages: "Server non risponde. Prova più tardi" };
+      return { Messages: "Server not responding. Try later" };
     }
   },
 

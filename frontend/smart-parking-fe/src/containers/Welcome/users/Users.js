@@ -17,8 +17,8 @@ export const Users = () => {
             <div style={{ width: "100%", display: "table" }}>
                 <div style={{ display: "table-row" }}>
 
-                    <div style={{ width: 240, display: "table-cell" }}>
-                        <Sider style={{ height: 600, opacity: 40 }} />
+                    <div style={{ width: 300, display: "table-cell" }}>
+                        <Sider style={{ height: 710, opacity: 40 }} />
                     </div>
 
                     <div style={{ display: "table-cell" }}>
